@@ -1,28 +1,20 @@
 package com.leetcode.twopointers;
 
+/// [力扣题解](https://leetcode.cn/problems/container-with-most-water/?envType=study-plan-v2&envId=top-100-liked)
 public class LeetCode11 {
     public int maxArea(int[] height) {
         int left = 0, right = height.length - 1;
-        int maxArea  =0;
-        
-        while(left<right){
-            int currentArea =Math.min(height[left],height[right]) * (right - left);
-            maxArea =Math.max(maxArea ,currentArea );
-            
-            if(height[left]<=height[right]){
-                int originalHeight = height[left];
-                //直接跳过无效高度的指针移动
-                do {
-                    left++;
-                } while (left < right && height[left] <= originalHeight);
-            }
-            else{
-                int originalHeight = height[right];
-                do {
-                    right--;
-                } while (left < right && height[right] <= originalHeight);
+        int ans = 0;
+
+        // 每次动高度比较小的那一个边界就行了
+        while (left < right) {
+            ans = Math.max(Math.min(height[left], height[right]) * (right - left), ans);
+            if (height[left] <= height[right]) {
+                ++left;
+            } else {
+                --right;
             }
         }
-        return maxArea ;
+        return ans;
     }
 }
