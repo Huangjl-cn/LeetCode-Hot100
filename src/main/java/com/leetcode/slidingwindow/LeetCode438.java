@@ -3,45 +3,56 @@ package com.leetcode.slidingwindow;
 import java.util.ArrayList;
 import java.util.List;
 
+/// [力扣题解](https://leetcode.cn/problems/find-all-anagrams-in-a-string/solutions/1123971/zhao-dao-zi-fu-chuan-zhong-suo-you-zi-mu-xzin/?envType=study-plan-v2&envId=top-100-liked)
 public class LeetCode438 {
     public List<Integer> findAnagrams(String s, String p) {
-        List<Integer> result = new ArrayList<>();
-        if (s.length() < p.length()) return result;
-
-        int[] count = new int[26];
         int sLen = s.length(), pLen = p.length();
+        List<Integer> res = new ArrayList<>();
+        if (sLen < pLen) {
+            return res;
+        }
 
-        // 初始化窗口
-        for (int i = 0; i < pLen; i++) {
-            count[p.charAt(i) - 'a']--;
+        // 统计初始窗口和p的中，字母出现次数的差
+        int[] count = new int[26];
+        for (int i = 0; i < pLen; ++i) {
             count[s.charAt(i) - 'a']++;
+            count[p.charAt(i) - 'a']--;
         }
 
+        //初始化diff值
         int diff = 0;
-        for (int c : count) {
-            if (c != 0) diff++;
+        for (int j = 0; j < 26; ++j) {
+            if (count[j] != 0) {
+                ++diff;
+            }
         }
 
-        if (diff == 0) result.add(0);
-
-        // 滑动窗口
-        for (int i = 0; i < sLen - pLen; i++) {
-            int left = s.charAt(i) - 'a';
-            int right = s.charAt(i + pLen) - 'a';
-
-            // 移除左侧字符
-            if (count[left] == 1) diff--;
-            else if (count[left] == 0) diff++;
-            count[left]--;
-
-            // 添加右侧字符
-            if (count[right] == -1) diff--;
-            else if (count[right] == 0) diff++;
-            count[right]++;
-
-            if (diff == 0) result.add(i + 1);
+        if (diff == 0) {
+            res.add(0);
         }
 
-        return result;
+        // 开始滑动窗口
+        for (int i = 0; i < sLen - pLen; ++i) {
+            // 移出左边的值
+            if (count[s.charAt(i) - 'a'] == 1) {  // 窗口中字母 s[i] 的数量与字符串 p 中的数量从不同变得相同
+                --diff;
+            } else if (count[s.charAt(i) - 'a'] == 0) {  // 窗口中字母 s[i] 的数量与字符串 p 中的数量从相同变得不同
+                ++diff;
+            }
+            --count[s.charAt(i) - 'a'];
+
+            // 移进右边的值
+            if (count[s.charAt(i + pLen) - 'a'] == -1) {  // 窗口中字母 s[i+pLen] 的数量与字符串 p 中的数量从不同变得相同
+                --diff;
+            } else if (count[s.charAt(i + pLen) - 'a'] == 0) {  // 窗口中字母 s[i+pLen] 的数量与字符串 p 中的数量从相同变得不同
+                ++diff;
+            }
+            ++count[s.charAt(i + pLen) - 'a'];
+
+            if (diff == 0) {
+                res.add(i + 1);
+            }
+        }
+        return res;
     }
 }
