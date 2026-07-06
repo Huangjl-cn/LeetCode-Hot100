@@ -1,6 +1,6 @@
 package com.leetcode.twopointers;
 
-/// [力扣题解](https://leetcode.cn/problems/move-zeroes/solutions/489622/yi-dong-ling-by-leetcode-solution/?envType=study-plan-v2&envId=top-100-liked)
+/// [移动零](https://leetcode.cn/problems/move-zeroes/solutions/489622/yi-dong-ling-by-leetcode-solution/?envType=study-plan-v2&envId=top-100-liked)
 public class LeetCode283 {
     /**
      * 使用双指针：最开始都指向起始元素，他们分开的时机就是第一次遇到 0 元素的时候，这时 left 会留在原地，right 会继续向右直到遇到非 0 元素

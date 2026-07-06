@@ -1,6 +1,6 @@
 package com.leetcode.twopointers;
 
-/// [力扣题解](https://leetcode.cn/problems/trapping-rain-water/solutions/692342/jie-yu-shui-by-leetcode-solution-tuvc/?envType=study-plan-v2&envId=top-100-liked)
+/// [接雨水](https://leetcode.cn/problems/trapping-rain-water/solutions/692342/jie-yu-shui-by-leetcode-solution-tuvc/?envType=study-plan-v2&envId=top-100-liked)
 /// #### 基本思路：
 /// 每个位置 x 能接的雨水量由左右最大高度的最小值决定<br>
 /// 代码上来看就是：`maxHeight[x] = Math.min(leftMax[x] ,rightMax[x]) - height[x]`

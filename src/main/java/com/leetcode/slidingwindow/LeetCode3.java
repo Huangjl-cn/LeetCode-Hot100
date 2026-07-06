@@ -3,7 +3,7 @@ package com.leetcode.slidingwindow;
 import java.util.HashMap;
 import java.util.Map;
 
-/// [力扣题解](https://leetcode.cn/problems/longest-substring-without-repeating-characters/solutions/227999/wu-zhong-fu-zi-fu-de-zui-chang-zi-chuan-by-leetc-2/?envType=study-plan-v2&envId=top-100-liked)
+/// [无重复字符的最长子串](https://leetcode.cn/problems/longest-substring-without-repeating-characters/solutions/227999/wu-zhong-fu-zi-fu-de-zui-chang-zi-chuan-by-leetc-2/?envType=study-plan-v2&envId=top-100-liked)
 public class LeetCode3 {
     /**
      * 优化思路：因为只包含英文字母、数字、符号和空格组成，可以直接用数组来替代Map

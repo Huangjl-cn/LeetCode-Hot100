@@ -3,7 +3,7 @@ package com.leetcode.hash;
 import java.util.HashSet;
 import java.util.Set;
 
-/// [力扣题解](https://leetcode.cn/problems/longest-consecutive-sequence/solutions/276931/zui-chang-lian-xu-xu-lie-by-leetcode-solution/?envType=study-plan-v2&envId=top-100-liked)
+/// [最长连续序列](https://leetcode.cn/problems/longest-consecutive-sequence/solutions/276931/zui-chang-lian-xu-xu-lie-by-leetcode-solution/?envType=study-plan-v2&envId=top-100-liked)
 public class LeetCode128 {
     /**
      * 最关键的就是怎么取到一个连续数列的开头：判断 x 是否存在 x-1 这个数，如果存在就不是一个连续数列的开头

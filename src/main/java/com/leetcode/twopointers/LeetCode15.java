@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/// [力扣题解](https://leetcode.cn/problems/3sum/solutions/284681/san-shu-zhi-he-by-leetcode-solution/?envType=study-plan-v2&envId=top-100-liked)
+/// [三数之和](https://leetcode.cn/problems/3sum/solutions/284681/san-shu-zhi-he-by-leetcode-solution/?envType=study-plan-v2&envId=top-100-liked)
 /// ### 优化思路:
 /// #### 1.在第一个元素>0时，提前停止
 /// ```java

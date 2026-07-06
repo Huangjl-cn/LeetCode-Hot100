@@ -2,7 +2,7 @@ package com.leetcode.hash;
 
 import java.util.*;
 
-/// [力扣题解](https://leetcode.cn/problems/group-anagrams/solutions/520469/zi-mu-yi-wei-ci-fen-zu-by-leetcode-solut-gyoc/?envType=study-plan-v2&envId=top-100-liked)
+/// [字母异位词分组](https://leetcode.cn/problems/group-anagrams/solutions/520469/zi-mu-yi-wei-ci-fen-zu-by-leetcode-solut-gyoc/?envType=study-plan-v2&envId=top-100-liked)
 public class LeetCode49 {
     /**
      * 思路：将每个字符串排序，作为key，将字符串放入对应的key中

@@ -1,6 +1,6 @@
 package com.leetcode.twopointers;
 
-/// [力扣题解](https://leetcode.cn/problems/container-with-most-water/?envType=study-plan-v2&envId=top-100-liked)
+/// [盛最多水的容器](https://leetcode.cn/problems/container-with-most-water/?envType=study-plan-v2&envId=top-100-liked)
 public class LeetCode11 {
     public int maxArea(int[] height) {
         int left = 0, right = height.length - 1;
