@@ -1,20 +1,17 @@
 package com.leetcode.array;
 
-/**
- * <pre>{@code
- * 动态规划：
- * 假设f(i) 代表以第 i 个数结尾的「连续子数组的最大和」，其中f(i):
- * f(i)=max{f(i−1)+nums[i],nums[i]}
- * 最后获取f(i)中的最大值即可
- * }</pre>
- */
+/// [最大子序和](https://leetcode.cn/problems/maximum-subarray/solutions/228009/zui-da-zi-xu-he-by-leetcode-solution/?envType=study-plan-v2&envId=top-100-liked)
 public class LeetCode53 {
+    /**
+     * 思路和`和为K的子数组`那道题有点像，还更简单一点，不断比较以 i 结尾的子数组就好了。也就是动态规划，还有个分治的解法，有时间可以学习一下
+     */
     public int maxSubArray(int[] nums) {
-        int preF = 0, maxF = nums[0];
-        for (int i : nums) {
-            preF = Math.max(preF + i, i);
-            maxF = Math.max(maxF, preF);
+        int max = Integer.MIN_VALUE;
+        int pre = 0; //代表以 i- 1 结尾的子数组的最大值
+        for (int num : nums) {
+            pre = Math.max(pre + num, num);
+            max = Math.max(pre, max);
         }
-        return maxF;
+        return max;
     }
 }

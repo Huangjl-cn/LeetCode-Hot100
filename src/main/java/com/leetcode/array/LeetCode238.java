@@ -1,32 +1,7 @@
 package com.leetcode.array;
 
-/**
- * <pre>{@code
- * //优化空间，直接使用answer数组先遍历元素的左侧元素乘积，再直接遍历右侧元素乘积乘到answer上即可
- * public int[] productExceptSelf(int[] nums) {
- *         int length = nums.length;
- *         int[] answer = new int[length];
- *
- *         // answer[i] 表示索引 i 左侧所有元素的乘积
- *         // 因为索引为 '0' 的元素左侧没有元素， 所以 answer[0] = 1
- *         answer[0] = 1;
- *         for (int i = 1; i < length; i++) {
- *             answer[i] = nums[i - 1] * answer[i - 1];
- *         }
- *
- *         // R 为右侧所有元素的乘积
- *         // 刚开始右边没有元素，所以 R = 1
- *         int R = 1;
- *         for (int i = length - 1; i >= 0; i--) {
- *             // 对于索引 i，左边的乘积为 answer[i]，右边的乘积为 R
- *             answer[i] = answer[i] * R;
- *             // R 需要包含右边所有的乘积，所以计算下一个结果时需要将当前值乘到 R 上
- *             R *= nums[i];
- *         }
- *         return answer;
- *     }
- * }</pre>
- */
+/// [除了自身以外数组的乘积](https://leetcode.cn/problems/product-of-array-except-self/solutions/272369/chu-zi-shen-yi-wai-shu-zu-de-cheng-ji-by-leetcode-/?envType=study-plan-v2&envId=top-100-liked)
+/// 题解的优化方法，没有真正意义上地实现空间复杂度为O(1) ，所以看看就好
 public class LeetCode238 {
     public int[] productExceptSelf(int[] nums) {
         int length = nums.length;
