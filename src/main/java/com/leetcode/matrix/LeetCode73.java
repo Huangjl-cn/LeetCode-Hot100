@@ -1,51 +1,52 @@
 package com.leetcode.matrix;
 
-/**
- * 为了实现原地算法：空间复杂度为O(1)，使用第0行和第0列来存储每行、列是否包含0。额外使用两个变量来记录
- * 第0行、列原本是否包含0
- */
+/// [矩阵置零](https://leetcode.cn/problems/set-matrix-zeroes/solutions/669901/ju-zhen-zhi-ling-by-leetcode-solution-9ll7/?envType=study-plan-v2&envId=top-100-liked)
 public class LeetCode73 {
+    /**
+     * 使用矩阵的第一行、第一列去做标记数组，一行一列的那个格子表示第一行的状态，另起一个变量表示第一列的状态
+     */
     public void setZeroes(int[][] matrix) {
-        int m = matrix.length, n = matrix[0].length;
-        //"row" 通常指的是行，而"column" 则指的是列
-        boolean rowZero = false;
-        boolean colZero = false;
-        for (int i = 0; i < m; i++) {
+        // 初始化flagCol0、和matrix[0][0]
+        boolean flagCol0 = false;
+        int rowLength = matrix.length, colLength = matrix[0].length;
+        // 这里有个小细节，就是先初始化flagCol0
+        // 不然初始化matrix[0][0]后（本身不为0，同行有0的情况），会影响flagCol0的判断
+        for (int i = 0; i < rowLength; ++i) {
             if (matrix[i][0] == 0) {
-                colZero = true;
+                flagCol0 = true;
                 break;
             }
         }
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < colLength; ++i) {
             if (matrix[0][i] == 0) {
-                rowZero = true;
+                matrix[0][0] = 0;
                 break;
             }
         }
-        //记录0出现的行、列
-        for (int i = 1; i < m; i++) {
-            for (int j = 1; j < n; j++) {
+        // 遍历数组，标记状态
+        for (int i = 1; i < rowLength; ++i) {
+            for (int j = 1; j < colLength; ++j) {
                 if (matrix[i][j] == 0) {
-                    matrix[i][0] = matrix[0][j] = 0;
+                    matrix[0][j] = matrix[i][0] = 0;
                 }
             }
         }
-        //根据第0行、列更新矩阵
-        for (int i = 1; i < m; i++) {
-            for (int j = 1; j < n; j++) {
-                if (matrix[i][0] == 0 || matrix[0][j] == 0) {
+        // 根据标志位更新数组
+        for (int i = 1; i < rowLength; ++i) {
+            for (int j = 1; j < colLength; ++j) {
+                if (matrix[0][j] == 0 || matrix[i][0] == 0) {
                     matrix[i][j] = 0;
                 }
             }
         }
-        if (colZero) {
-            for (int i = 0; i < m; i++) {
-                matrix[i][0] = 0;
+        if (matrix[0][0] == 0) {
+            for (int i = 0; i < colLength; ++i) {
+                matrix[0][i] = 0;
             }
         }
-        if (rowZero) {
-            for (int j = 0; j < n; j++) {
-                matrix[0][j] = 0;
+        if (flagCol0) {
+            for (int i = 0; i < rowLength; ++i) {
+                matrix[i][0] = 0;
             }
         }
     }
